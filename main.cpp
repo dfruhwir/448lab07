@@ -9,11 +9,11 @@ int main()
 	std::cout << "Test if isEmpty()==true: ";
 	if(p1.isEmpty()==false)
 	{
-		std::cout << "Pass!";
+		std::cout << "Pass!\n";
 	}
 	else
 	{
-		std::cout << "FAIL!! :-(";
+		std::cout << "FAIL!! :-(\n";
 	}
 	return(0);
 }
