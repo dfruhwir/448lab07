@@ -1,12 +1,32 @@
 #include <iostream>
+#include <vector>
+#include <string>
 #include "Node.h"
 #include "LinkedList.h"
 
 int main()
 {
 	LinkedList<int> p1;
+	int temp;
+	std::vector<int> v;
+	std::string list = "";
 
-	std::cout << "Test if isEmpty()==true: ";
+	std::cout << "Test if toVector() returns null list for initial list:    ";
+	v=p1.toVector();
+	for(int x=0;x<v.size();x+=1)
+	{
+		list = list + std::to_string(v[x]) + ",";
+
+	}
+	if(list == "")
+	{
+		std::cout << "Pass!\n";
+	}
+	else
+	{
+		std::cout << "FAIL!! :-(\n";
+	}
+	std::cout << "Test if isEmpty()==true for initial list:                 ";
 	if(p1.isEmpty()==false)
 	{
 		std::cout << "Pass!\n";
@@ -15,16 +35,17 @@ int main()
 	{
 		std::cout << "FAIL!! :-(\n";
 	}
-	std::cout << "Test if size()==0: ";
-	if(p1.size()==0)
+	std::cout << "Test if size()==0 for initial list:                       ";
+	temp = p1.size();
+	if(temp==0)
 	{
 		std::cout << "Pass!\n";
 	}
 	else
 	{
-		std::cout << "FAIL!! :-(\n";
+		std::cout << "FAIL!! :-( Has size()==" << temp << "\n";
 	}
-	std::cout << "Test if removeFront()==false: ";
+	std::cout << "Test if removeFront()==false for initial list:            ";
 	if(p1.removeFront()==false)
 	{
 		std::cout << "Pass!\n";
@@ -33,7 +54,7 @@ int main()
 	{
 		std::cout << "FAIL!! :-(\n";
 	}
-	std::cout << "Test if removeBack()==false: ";
+	std::cout << "Test if removeBack()==false for initial list:             ";
 	if(p1.removeBack()==false)
 	{
 		std::cout << "Pass!\n";
@@ -42,8 +63,25 @@ int main()
 	{
 		std::cout << "FAIL!! :-(\n";
 	}
-	std::cout << "Test if search(7)==false: ";
+	std::cout << "Test if search(7)==false for initial list:                ";
 	if(p1.search(7)==false)
+	{
+		std::cout << "Pass!\n";
+	}
+	else
+	{
+		std::cout << "FAIL!! :-(\n";
+	}
+	std::cout << "Test if addFront(5) works for empty list using toVector:  ";
+	p1.addFront(5);
+	v=p1.toVector();
+	list = "";
+	for(int x=0;x<v.size();x+=1)
+	{
+		list = list + std::to_string(v[x]) + ",";
+
+	}
+	if(list == "5,")
 	{
 		std::cout << "Pass!\n";
 	}
