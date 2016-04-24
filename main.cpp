@@ -6,6 +6,7 @@
 
 int main()
 {
+	LinkedList<int> p0;
 	LinkedList<int> p1;
 	LinkedList<int> p2;
 	LinkedList<int> p3;
@@ -16,6 +17,7 @@ int main()
 	LinkedList<int> p8;
 	LinkedList<int> p9;
 	LinkedList<int> p10;
+	LinkedList<int> p11;
 
 	int temp;
 	int temp2;
@@ -26,9 +28,10 @@ int main()
 	bool a_front1 = true;
 	bool a_back = true;
 	bool a_back1 = true;
+	bool s = false;
 
 	std::cout << "toVector() returns null list for initial list:    ";
-	v=p1.toVector();
+	v=p0.toVector();
 	for(int x=0;x<v.size();x+=1)
 	{
 		list = list + std::to_string(v[x]) + ",";
@@ -42,7 +45,7 @@ int main()
 		std::cout << "FAIL!! :-( Initial values are " << list << "\n";
 	}
 	std::cout << "isEmpty()==true for initial list:                 ";
-	if(p1.isEmpty()==true)
+	if(p0.isEmpty()==true)
 	{
 		std::cout << "Pass!\n";
 	}
@@ -50,7 +53,41 @@ int main()
 	{
 		std::cout << "FAIL!! :-(\n";
 	}
+	std::cout << "isEmpty() does not affect initial list:           ";
+	v=p0.toVector();
+	list2 = "";
+	for(int x=0;x<v.size();x+=1)
+	{
+		list2 = list2 + std::to_string(v[x]) + ",";
+	}
+	if(list == list2)
+	{
+		std::cout << "Pass!\n";
+	}	
+	else
+	{
+		std::cout << "FAIL!! :-( list should stay " << list << " but is " << list2 << "\n";
+	}
+	std::cout << "isEmpty() doesn't affect size on empty list:      ";
+	temp = p0.size();
+	s = p0.isEmpty();
+	temp2 = p0.size();
+	if(temp == temp2)
+	{
+		std::cout << "Pass!\n";
+	}
+	else
+	{
+		std::cout << "FAIL!! :-( Has size increase by " << (temp2-temp) << "\n";
+	}
+	//Switch to p1 in case problems have arisen
 	std::cout << "size()==0 for initial list:                       ";
+	v=p1.toVector();
+	list = "";
+	for(int x=0;x<v.size();x+=1)
+	{
+		list = list + std::to_string(v[x]) + ",";
+	}
 	temp2 = p1.size();
 	if(temp2==0)
 	{
@@ -60,7 +97,22 @@ int main()
 	{
 		std::cout << "FAIL!! :-( Has size()==" << temp2 << "\n";
 	}
-	std::cout << "size() does not increase size:                    ";
+	std::cout << "size() does not change initial list:              ";
+	v=p1.toVector();
+	list2 = "";
+	for(int x=0;x<v.size();x+=1)
+	{
+		list2 = list2 + std::to_string(v[x]) + ",";
+	}
+	if(list == list2)
+	{
+		std::cout << "Pass!\n";
+	}	
+	else
+	{
+		std::cout << "FAIL!! :-( list should stay " << list << " but is " << list2 << "\n";
+	}
+	std::cout << "size() does not increase size for initial list:   ";
 	temp = p1.size();
 	if(temp==temp2)
 	{
@@ -562,6 +614,16 @@ int main()
 	{
 		std::cout << "FAIL!! :-( list should be " << list << " but is " << list2 << "\n";
 	}
+	std::cout << "size() does not affect size for non-empty list    ";
+	temp2 = p8.size();
+	if(temp==temp2)
+	{
+		std::cout << "Pass!\n";
+	}
+	else
+	{
+		std::cout << "FAIL!! :-( Has size increase by " << (temp2-temp) << "\n";
+	}	
 	//Switch to p9 in case of problems
 	std::cout << "removeBack() returns true on big list:            ";
 	//Add nodes depending on what works
@@ -738,6 +800,109 @@ int main()
 		else
 		{
 			std::cout << "FAIL!! :-( Has size decrease by " << (temp-temp2) << "\n";
+		}
+	}
+	//Switch to p11 in case problems have arisen
+	std::cout << "isEmpty() returns false on non-empty list:        ";
+	//Add nodes depending on what works
+	if(a_front1 == true)
+	{
+		p11.addFront(5);
+	}
+	else if(a_back1 == true)
+	{
+		p11.addBack(5);
+	}
+	if(a_front == true)
+	{
+		p11.addFront(6);
+		p11.addFront(7);
+		v=p11.toVector();
+		list = "";
+		for(int x=0;x<v.size();x+=1)
+		{
+			list = list + std::to_string(v[x]) + ",";
+		}
+		if(p11.isEmpty() == false)
+		{
+			std::cout << "Pass!\n";
+		}
+		else
+		{
+			std::cout << "FAIL!! :-(\n";
+		}
+		std::cout << "isEmpty() does not affect list:                   ";
+		v=p11.toVector();
+		list2 = "";
+		for(int x=0;x<v.size();x+=1)
+		{
+			list2 = list2 + std::to_string(v[x]) + ",";
+		}
+		if(list == list2)
+		{
+			std::cout << "Pass!\n";
+		}	
+		else
+		{
+			std::cout << "FAIL!! :-( list should stay " << list << " but is " << list2 << "\n";
+		}
+		std::cout << "isEmpty() doesn't affect size on non-empty list:  ";
+		temp = p11.size();
+		s = p11.isEmpty();
+		temp2 = p11.size();
+		if(temp == temp2)
+		{
+			std::cout << "Pass!\n";
+		}
+		else
+		{
+			std::cout << "FAIL!! :-( Has size increase by " << (temp2-temp) << "\n";
+		}
+	}
+	else if(a_back == true)
+	{
+		p11.addBack(6);
+		p11.addBack(7);
+		v=p11.toVector();
+		list = "";
+		for(int x=0;x<v.size();x+=1)
+		{
+			list = list + std::to_string(v[x]) + ",";
+		}
+		if(p11.isEmpty() == false)
+		{
+			std::cout << "Pass!\n";
+		}
+		else
+		{
+			std::cout << "FAIL!! :-(\n";
+		}
+		std::cout << "isEmpty() does not affect list:                   ";
+		v=p11.toVector();
+		list2 = "";
+		for(int x=0;x<v.size();x+=1)
+		{
+			list2 = list2 + std::to_string(v[x]) + ",";
+		}
+		if(list == list2)
+		{
+			std::cout << "Pass!\n";
+		}	
+		else
+		{
+			std::cout << "FAIL!! :-( list should stay " << list << " but is " << list2 << "\n";
+		}
+		std::cout << "isEmpty() doesn't affect size on non-empty list:  ";
+		temp = p11.size();
+		s = p11.isEmpty();
+		temp2 = p11.size();
+		if(temp == temp2)
+		{
+			std::cout << "Pass!\n";
+		}
+		else
+		{
+			std::cout << "FAIL!! :-( Has size increase by " << (temp2-temp) << "\n";
 		}
 	}
 	return(0);
