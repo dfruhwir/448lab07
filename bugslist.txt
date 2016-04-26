@@ -1,0 +1,10 @@
+1. addBack() adds a node with the value of m_front (unless of course the list is empty), not the parameter value.
+
+2. removeFront() just does removeBack().
+
+The other problem had to do with size() returning 1 more than it should and isEmpty() returning false when the list is empty. This meant there was something wrong with size(), isEmpty(), and/or the constructor. The problems would not occur if the methods checked the nodes to see the size, so there is a problem with it interacting with m_size. Size() could be the only thing wrong, with it returning 1 more than m_size, and the isEmpty() basing it's return value on size(). But that would mean there are only 3 bugs. The constructor could initialize m_size to 1 instead of 0 causing everything else to fail, but still only 3 bugs. So some other method must be wrong. Most likely:
+
+3. isEmpty() always returns false.
+
+4. size() returns m_size+1 or m_size is initialized by the constructor as 1.
+
