@@ -6,5 +6,7 @@ The other problem had to do with size() returning 1 more than it should and isEm
 
 3. isEmpty() always returns false.
 
-4. size() returns m_size+1 or m_size is initialized by the constructor as 1.
+Then either size() returns m_size+1 or m_size is initialized by the constructor as 1. There is really no way to tell without actually being able to look at the value of m_size and also making size() somehow = 0. (which can be done by changing the header file to make it public). So I'll say:
+
+4. size() returns m_size+1
 
