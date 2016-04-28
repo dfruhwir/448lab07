@@ -18,6 +18,7 @@ int main()
 	LinkedList<int> p9;
 	LinkedList<int> p10;
 	LinkedList<int> p11;
+	LinkedList<int> p12;
 
 	int temp;
 	int temp2;
@@ -131,6 +132,16 @@ int main()
 	{
 		std::cout << "FAIL!! :-(\n";
 	}
+	std::cout << "size does not change for removeFront()==false:    ";
+	temp2 = p1.size();
+	if(temp==temp2)
+	{
+		std::cout << "Pass!\n";
+	}
+	else
+	{
+		std::cout << "FAIL!! :-( Has size decrease by " << (temp-temp2) << "\n";
+	}
 	std::cout << "removeBack()==false for initial list:             ";
 	if(p1.removeBack()==false)
 	{
@@ -139,6 +150,16 @@ int main()
 	else
 	{
 		std::cout << "FAIL!! :-(\n";
+	}
+	std::cout << "size does not change for removeFront()==false:    ";
+	temp = p1.size();
+	if(temp==temp2)
+	{
+		std::cout << "Pass!\n";
+	}
+	else
+	{
+		std::cout << "FAIL!! :-( Has size decrease by " << (temp2-temp) << "\n";
 	}
 	std::cout << "search(7)==false for initial list:                ";
 	if(p1.search(7)==false)
